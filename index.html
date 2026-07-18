@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jonathan Catterton — Mechanical Engineer &amp; Robotics</title>
+<meta name="description" content="Portfolio of Jonathan Catterton — Mechanical Engineering & Robotics student at the University of Delaware.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7f4ee;
+    --paper:#fbf9f5;
+    --tint:#f3e9da;
+    --ink:#22262e;
+    --ink-soft:#565c68;
+    --line:#dedad0;
+    --line-on-tint:#e7d8c1;
+    --blue:#5b7f9e;
+    --blue-deep:#3e5a73;
+    --maxw:1000px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background-color:var(--cream);
+    background-image:
+      linear-gradient(rgba(62,90,115,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(62,90,115,0.05) 1px, transparent 1px);
+    background-size:44px 44px;
+    color:var(--ink);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--blue-deep); text-decoration:none; border-bottom:1px solid transparent;}
+  a:hover{border-bottom-color:var(--blue-deep);}
+  .serif{font-family:'Fraunces', Georgia, serif;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 40px;}
+  @media(max-width:640px){ .wrap{padding:0 22px;} }
+
+  header.nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(247,244,238,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  header.nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 40px;
+  }
+  header.nav .brand{
+    font-family:'Fraunces', serif; font-weight:500; font-size:1.05rem; letter-spacing:0.3px;
+  }
+  header.nav nav a{
+    color:var(--ink-soft); margin-left:30px; font-size:0.85rem;
+    letter-spacing:0.3px; border-bottom:none;
+  }
+  header.nav nav a:hover{color:var(--blue-deep);}
+
+  .hero{
+    padding:110px 0 90px;
+  }
+  .hero .eyebrow{
+    color:var(--blue-deep); font-size:0.78rem; letter-spacing:2.5px; text-transform:uppercase;
+    margin-bottom:22px; font-weight:600;
+  }
+  .hero h1{
+    font-family:'Fraunces', serif; font-weight:500; font-size:3.4rem; line-height:1.08;
+    margin:0 0 22px; letter-spacing:-0.5px; max-width:780px;
+  }
+  .hero h1 em{font-style:italic; color:var(--blue-deep); font-weight:400;}
+  .hero p.lead{
+    color:var(--ink-soft); max-width:560px; font-size:1.08rem; margin:0 0 36px;
+  }
+  .hero .rule{
+    width:64px; height:2px; background:var(--blue); margin:0 0 36px;
+  }
+  .contact-row{
+    display:flex; flex-wrap:wrap; gap:28px; font-size:0.92rem;
+  }
+  .contact-row a, .contact-row span{color:var(--ink-soft); border-bottom:1px solid var(--line);}
+  .contact-row a:hover{color:var(--blue-deep); border-bottom-color:var(--blue-deep);}
+
+  section{padding:70px 0; border-top:1px solid var(--line); position:relative; transition:background 0.3s ease;}
+  section:nth-of-type(even){background:var(--tint); border-top-color:var(--line-on-tint);}
+  section:nth-of-type(even) + section{border-top-color:var(--line-on-tint);}
+  section:nth-of-type(even) .entry,
+  section:nth-of-type(even) .project-card,
+  section:nth-of-type(even) li{border-color:var(--line-on-tint);}
+  section:nth-of-type(even) .project-card{background:var(--paper);}
+
+  /* scroll-reveal motion */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+
+  .section-head{
+    display:flex; align-items:baseline; gap:16px; margin-bottom:44px;
+  }
+  .section-head .num{
+    color:var(--blue); font-size:0.85rem; font-weight:600; letter-spacing:1px;
+  }
+  h2.section-title{
+    font-family:'Fraunces', serif; font-weight:500; font-size:1.6rem; margin:0;
+  }
+
+  .entry{
+    display:grid; grid-template-columns:200px 1fr; gap:28px;
+    padding:28px 0; border-bottom:1px solid var(--line);
+  }
+  .entry:first-child{padding-top:0;}
+  .entry:last-child{border-bottom:none;}
+  @media(max-width:680px){ .entry{grid-template-columns:1fr; gap:6px;} }
+  .entry .when{color:var(--ink-soft); font-size:0.85rem; padding-top:2px;}
+  .entry .when .status{
+    display:block; color:var(--blue-deep); font-weight:600; font-size:0.72rem;
+    letter-spacing:0.5px; text-transform:uppercase; margin-top:4px;
+  }
+  .entry h3{margin:0 0 4px; font-size:1.12rem; font-weight:600;}
+  .entry .org{
+    color:var(--blue-deep); font-size:0.92rem; margin-bottom:12px; font-weight:500;
+    display:flex; align-items:center; gap:8px;
+  }
+  .entry .org .org-logo{
+    height:18px; width:18px; object-fit:contain; border-radius:4px;
+    flex-shrink:0;
+  }
+  .entry ul{margin:0; padding-left:18px; color:var(--ink-soft); font-size:0.95rem;}
+  .entry ul li{margin-bottom:7px;}
+
+  button.entry{
+    background:none; border:none; width:100%; text-align:left; font:inherit; color:inherit;
+    cursor:pointer; border-radius:4px; transition:background 0.15s ease;
+  }
+  button.entry:hover, button.entry:focus-visible{background:rgba(91,127,158,0.06); outline:none;}
+  button.entry .cta{
+    color:var(--blue-deep); font-size:0.8rem; font-weight:600; margin-top:2px;
+  }
+  button.entry .cta::after{content:" \2192";}
+
+  .projects-grid{display:grid; grid-template-columns:1fr; gap:18px;}
+  @media(min-width:720px){ .projects-grid{grid-template-columns:1fr 1fr;} }
+
+  .project-card{
+    text-align:left; cursor:pointer; background:var(--paper);
+    border:1px solid var(--line); border-radius:4px; padding:26px 26px 22px;
+    display:flex; flex-direction:column; gap:10px; font-family:inherit; color:inherit;
+    transition:border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .project-card:hover, .project-card:focus-visible{
+    border-color:var(--blue); transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(34,38,46,0.06); outline:none;
+  }
+  .project-card .card-top{
+    display:flex; justify-content:space-between; align-items:baseline; gap:8px;
+  }
+  .project-card h3{margin:0; font-size:1.08rem; font-weight:600; line-height:1.35;}
+  .project-card .when{color:var(--ink-soft); font-size:0.8rem; white-space:nowrap;}
+  .project-card .stack{color:var(--blue-deep); font-size:0.8rem; font-weight:500;}
+  .project-card .teaser{color:var(--ink-soft); font-size:0.92rem; margin:0;}
+  .project-card .cta{
+    margin-top:auto; padding-top:6px; font-size:0.8rem; color:var(--blue-deep);
+    font-weight:600; letter-spacing:0.3px;
+  }
+  .project-card .cta::after{content:" \2192";}
+
+  p.hint{color:var(--ink-soft); font-size:0.82rem; margin:20px 2px 0;}
+
+  .modal-backdrop{
+    display:none; position:fixed; inset:0; z-index:100;
+    background:rgba(34,38,46,0.45); backdrop-filter:blur(2px);
+    align-items:center; justify-content:center; padding:24px;
+  }
+  .modal-backdrop.open{display:flex;}
+  .modal{
+    background:var(--paper); max-width:640px; width:100%; max-height:82vh; overflow-y:auto;
+    border-radius:6px; padding:40px 36px; position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,0.25);
+  }
+  .modal-close{
+    position:absolute; top:18px; right:18px; background:none; border:none;
+    font-size:1.6rem; line-height:1; color:var(--ink-soft); cursor:pointer; padding:4px 8px;
+  }
+  .modal-close:hover{color:var(--ink);}
+  .modal-when{color:var(--ink-soft); font-size:0.82rem; margin-bottom:6px;}
+  .modal h3{
+    font-family:'Fraunces', serif; font-weight:500; font-size:1.5rem; margin:0 0 10px; padding-right:30px;
+  }
+  .modal-stack{color:var(--blue-deep); font-size:0.85rem; font-weight:500; margin-bottom:18px;}
+  .modal ul{margin:0; padding-left:20px; color:var(--ink-soft); font-size:0.96rem;}
+  .modal ul li{margin-bottom:9px;}
+
+  .skills-grid{display:grid; grid-template-columns:1fr; gap:32px;}
+  @media(min-width:720px){ .skills-grid{grid-template-columns:repeat(3,1fr);} }
+  .skill-block h4{
+    margin:0 0 12px; font-size:0.78rem; color:var(--blue-deep); text-transform:uppercase;
+    letter-spacing:1.5px; font-weight:600;
+  }
+  .skill-block p{margin:0; color:var(--ink-soft); font-size:0.95rem; line-height:1.8;}
+
+  .awards ul{list-style:none; margin:0; padding:0;}
+  .awards li{
+    padding:14px 0; border-bottom:1px solid var(--line); color:var(--ink-soft); font-size:0.98rem;
+    display:flex; gap:14px; align-items:baseline;
+  }
+  .awards li:last-child{border-bottom:none;}
+  .awards li .mark{color:var(--blue); font-size:0.9rem;}
+
+  footer{
+    padding:50px 0 70px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+  }
+  footer .name{font-family:'Fraunces', serif; font-size:1rem;}
+  footer .links{color:var(--ink-soft); font-size:0.88rem; display:flex; gap:22px;}
+  footer .links a{color:var(--ink-soft); border-bottom:1px solid var(--line);}
+  footer .links a:hover{color:var(--blue-deep); border-bottom-color:var(--blue-deep);}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="brand">Jonathan Catterton</div>
+    <nav>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#awards">Awards</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Mechanical Engineering &amp; Robotics</div>
+    <h1>Jonathan Catterton</h1>
+    <div class="rule"></div>
+    <p class="lead">
+      Seeking full-time opportunities in automation, robotics, design, and manufacturing.
+      Experience spans mechanical design and FEA, robotic trajectory planning, and field
+      engineering for infrastructure projects.
+    </p>
+    <div class="contact-row">
+      <a href="mailto:joncatterton@comcast.net">joncatterton@comcast.net</a>
+      <span>302-598-3462</span>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2 class="section-title">Education</h2>
+    </div>
+
+    <div id="education-list"></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">02</span>
+      <h2 class="section-title">Experience</h2>
+    </div>
+
+    <div class="entry">
+      <div class="when">May 2026 &ndash; Present<div class="status">Current</div></div>
+      <div>
+        <h3>Transmission Line Engineering Intern</h3>
+        <div class="org">
+          <img class="org-logo" src="https://www.google.com/s2/favicons?sz=128&domain=sargentlundy.com" alt="Sargent &amp; Lundy logo" loading="lazy" onerror="this.remove()">
+          Sargent &amp; Lundy
+        </div>
+        <ul>
+          <li>Perform structural loading, phasing, and clearance analysis for transmission line design using PLS-CADD.</li>
+          <li>Develop and maintain bills of materials (BOMs) supporting structure and hardware procurement for line design packages.</li>
+          <li>Support design engineers in modeling and validating line sections against code and utility loading criteria.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Aug 2025 &ndash; Present</div>
+      <div>
+        <h3>Teaching Assistant, Machine Design &ndash; Kinematics &amp; Kinetics</h3>
+        <div class="org">
+          <img class="org-logo" src="https://www.google.com/s2/favicons?sz=128&domain=udel.edu" alt="University of Delaware logo" loading="lazy" onerror="this.remove()">
+          University of Delaware
+        </div>
+        <ul>
+          <li>Facilitate weekly discussion sections, leading problem-solving sessions and group activities.</li>
+          <li>Advise two student project teams per semester on project management, teamwork, and documentation.</li>
+          <li>Grade assignments and deliverables using structured rubrics, providing detailed feedback; ~20 hrs/week.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">May 2025 &ndash; Aug 2025</div>
+      <div>
+        <h3>Project Engineer Intern</h3>
+        <div class="org">
+          <img class="org-logo" src="https://www.google.com/s2/favicons?sz=128&domain=mdavisinc.com" alt="M. Davis &amp; Sons logo" loading="lazy" onerror="this.remove()">
+          M. Davis &amp; Sons
+        </div>
+        <ul>
+          <li>Generated 50+ detailed project quotes and coordinated with 8 vendors for competitive pricing and delivery.</li>
+          <li>Managed 30+ purchase and work orders supporting six-figure project budgets.</li>
+          <li>Provided in-field support across 3 Merck job sites, ensuring compliance with safety standards.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">03</span>
+      <h2 class="section-title">Projects</h2>
+    </div>
+    <div class="projects-grid" id="projects-grid"></div>
+  </div>
+</section>
+
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-when" id="modal-when"></div>
+    <h3 id="modal-title"></h3>
+    <div class="modal-stack" id="modal-stack"></div>
+    <ul id="modal-list"></ul>
+  </div>
+</div>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">04</span>
+      <h2 class="section-title">Technical Skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <h4>Software &amp; Tools</h4>
+        <p>SolidWorks, MATLAB, Simulink, Python, C++, XFoil, SimScale, PLS-CADD</p>
+      </div>
+      <div class="skill-block">
+        <h4>Engineering</h4>
+        <p>CAD, FEA, CFD, mechanical design, thermal/fluid analysis, system integration, technical documentation</p>
+      </div>
+      <div class="skill-block">
+        <h4>Manufacturing</h4>
+        <p>DFM, GD&amp;T, CNC machining, 3D printing, laser cutting</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="awards" class="awards">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="num">05</span>
+      <h2 class="section-title">Awards &amp; Recognition</h2>
+    </div>
+    <ul>
+      <li><span class="mark">&mdash;</span> Dean's List, University of Delaware</li>
+      <li><span class="mark">&mdash;</span> Best Machining and Fabrication Award, Senior Design</li>
+      <li><span class="mark">&mdash;</span> Sponsor's Award, Stanley Black &amp; Decker Industrial Design</li>
+      <li><span class="mark">&mdash;</span> People's Choice "Best Design" Award, Statics Bike Design Challenge</li>
+      <li><span class="mark">&mdash;</span> Melissa &amp; Doug "Best in Show" Award, Pull Toy Challenge</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+    <div class="name">Jonathan Catterton</div>
+    <div class="links">
+      <a href="mailto:joncatterton@comcast.net">Email</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <span>302-598-3462</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const projects = [
+    {
+      id: "kuka",
+      title: "Vision-Guided Trajectory Planning – KUKA LBR iiwa 7",
+      when: "Spring 2026",
+      stack: "MATLAB · Inverse Kinematics · Computer Vision · UD Introduction to Robotics",
+      teaser: "Planned a full joint-space trajectory for a 7-DOF robot arm to align with vision-located targets, then validated and ran it on the physical robot.",
+      bullets: [
+        "Planned a joint-space trajectory in MATLAB for a 7-DOF KUKA LBR iiwa 7 R800 to sequentially align an end-effector with four workspace targets located via onboard camera and ArUco marker pose estimation.",
+        "Converted camera-frame marker poses to the robot base frame and solved inverse kinematics to generate target joint configurations.",
+        "Designed smooth point-to-point and linear Cartesian motion segments with zero-velocity boundary conditions across a 20 s, 4,000-point trajectory sampled at 5 ms.",
+        "Verified the discretized trajectory against joint position and velocity limits and confirmed collision-free motion relative to the table surface before executing on the physical arm."
+      ]
+    },
+    {
+      id: "asml",
+      title: "ASML Reticle Shock Protection Mechanism",
+      when: "Aug 2025 – Present",
+      stack: "SolidWorks · FEA · Senior Design · Patent-Pending",
+      teaser: "Designed a patent-pending mechanical shock protection assembly for a reticle, verified through shaker-table testing and FEA.",
+      bullets: [
+        "Designed and manufactured a patent-pending, purely mechanical protection mechanism preventing reticle slip under 4g shock while holding fixed interface geometry and cleanroom constraints.",
+        "Led end-to-end mechanical design and integration under strict tolerancing and material constraints, delivering a multi-material assembly rated for >100,000 cycles.",
+        "Ran dynamic shaker-table testing and quantified performance via accelerometer and image-based measurement, verifying <30 µm movement under worst-case shock.",
+        "Performed FEA stress and contact analysis to justify geometry and material selection; served as sole point of contact coordinating with ASML representatives."
+      ]
+    },
+    {
+      id: "pillcap",
+      title: "Automated Pill Capping Machine",
+      when: "Aug 2024 – May 2025",
+      stack: "Arduino · CAD · Junior Design",
+      teaser: "Built an automated capping system with a custom CAD-designed frame and Arduino control, reaching 7 bottles/min.",
+      bullets: [
+        "Designed and prototyped an automated pill bottle capping system achieving 7 bottles/min at >92% success rate.",
+        "Created custom CAD components, manufacturing parts via laser cutting and 3D printing.",
+        "Integrated an Arduino-based control system executing multi-stage sequencing for conveyance, cap alignment, and tightening.",
+        "Collaborated within a 10-person engineering team applying project management and documentation practices."
+      ]
+    },
+    {
+      id: "sbd",
+      title: "Industrial Design Project",
+      when: "Aug 2025 – Dec 2025",
+      stack: "Stanley Black &amp; Decker · User Research",
+      teaser: "Conducted user research to identify unmet needs and translated findings into a new mechanical design concept.",
+      bullets: [
+        "Conducted a user-centered research process to identify unmet needs and translated insights into a novel mechanical design concept.",
+        "Earned the Sponsor's Award from Stanley Black &amp; Decker for the resulting design.",
+        "Full project details are protected under NDA."
+      ]
+    }
+  ];
+
+  const grid = document.getElementById("projects-grid");
+  projects.forEach(p => {
+    const card = document.createElement("button");
+    card.className = "project-card reveal";
+    card.type = "button";
+    card.innerHTML = `
+      <div class="card-top">
+        <h3>${p.title}</h3>
+        <span class="when">${p.when}</span>
+      </div>
+      <div class="stack">${p.stack}</div>
+      <p class="teaser">${p.teaser}</p>
+      <div class="cta">View details</div>
+    `;
+    card.addEventListener("click", () => openModal(p));
+    grid.appendChild(card);
+  });
+
+  const education = [
+    {
+      id: "ms",
+      title: "Master of Science, Robotics",
+      when: "May 2027",
+      status: "In Progress",
+      stack: "University of Delaware &middot; Newark, DE",
+      bullets: [
+        "Machine Learning",
+        "Computer Vision",
+        "Linear Systems",
+        "Soft Robotics",
+        "Trajectory Planning",
+        "Introduction to Robotics"
+      ]
+    },
+    {
+      id: "bs",
+      title: "Bachelor of Mechanical Engineering",
+      when: "May 2026",
+      status: "Completed",
+      stack: "University of Delaware &middot; Newark, DE",
+      bullets: [
+        "EGGG 101 &ndash; Introduction to Engineering (First Year Experience)",
+        "MATH 241 &ndash; Calculus 1",
+        "MATH 242 &ndash; Calculus 2",
+        "MATH 243 &ndash; Calculus 3",
+        "MEEG 102 &ndash; Computer-Aided Engineering Design",
+        "MEEG 104 &ndash; Analysis and Communication of Technical Information",
+        "MEEG 210 &ndash; Statics",
+        "MEEG 211 &ndash; Dynamics",
+        "MEEG 215 &ndash; Mechanics of Solids",
+        "MEEG 216 &ndash; Mechanics of Solids Laboratory",
+        "MEEG 241 &ndash; Thermodynamics",
+        "MEEG 301 &ndash; Machine Design &ndash; Kinematics/Kinetics",
+        "MEEG 304 &ndash; Machine Design &ndash; Elements",
+        "MEEG 311 &ndash; Control Systems",
+        "MEEG 312 &ndash; Vibration and Control Lab",
+        "MEEG 321 &ndash; Materials Engineering",
+        "MEEG 331 &ndash; Fluid Mechanics 1",
+        "MEEG 332 &ndash; Fluid Mechanics 2",
+        "MEEG 333 &ndash; Fluid Mechanics Lab",
+        "MEEG 342 &ndash; Heat Transfer",
+        "MEEG 346 &ndash; Thermal Lab",
+        "MEEG 401 &ndash; Senior Design",
+        "MEEG 409 &ndash; Industrial Design",
+        "MEEG 432 &ndash; Aerodynamics",
+        "MEEG 433 &ndash; Rocket Propulsion"
+      ]
+    }
+  ];
+
+  const eduList = document.getElementById("education-list");
+  education.forEach(e => {
+    const row = document.createElement("button");
+    row.className = "entry entry-click reveal";
+    row.type = "button";
+    row.innerHTML = `
+      <div class="when">${e.when}${e.status ? `<div class="status">${e.status}</div>` : ""}</div>
+      <div>
+        <h3>${e.title}</h3>
+        <div class="org">
+          <img class="org-logo" src="https://www.google.com/s2/favicons?sz=128&domain=udel.edu" alt="University of Delaware logo" loading="lazy" onerror="this.remove()">
+          ${e.stack}
+        </div>
+        <div class="cta">View coursework</div>
+      </div>
+    `;
+    row.addEventListener("click", () => openModal(e));
+    eduList.appendChild(row);
+  });
+
+  const backdrop = document.getElementById("modal-backdrop");
+  const modalTitle = document.getElementById("modal-title");
+  const modalWhen = document.getElementById("modal-when");
+  const modalStack = document.getElementById("modal-stack");
+  const modalList = document.getElementById("modal-list");
+  let lastFocused = null;
+
+  function openModal(p){
+    lastFocused = document.activeElement;
+    modalTitle.innerHTML = p.title;
+    modalWhen.textContent = p.when;
+    modalStack.innerHTML = p.stack;
+    modalList.innerHTML = p.bullets.map(b => `<li>${b}</li>`).join("");
+    backdrop.classList.add("open");
+    document.getElementById("modal-close").focus();
+  }
+  function closeModal(){
+    backdrop.classList.remove("open");
+    if(lastFocused) lastFocused.focus();
+  }
+  document.getElementById("modal-close").addEventListener("click", closeModal);
+  backdrop.addEventListener("click", e => { if(e.target === backdrop) closeModal(); });
+  document.addEventListener("keydown", e => { if(e.key === "Escape") closeModal(); });
+
+  // scroll-triggered reveal motion
+  document.querySelectorAll(".section-head, .entry, .skill-block, .awards li").forEach(el => {
+    el.classList.add("reveal");
+  });
+  const revealEls = document.querySelectorAll(".reveal");
+  revealEls.forEach((el, i) => { el.style.transitionDelay = (i % 4) * 60 + "ms"; });
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("in-view");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  revealEls.forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
